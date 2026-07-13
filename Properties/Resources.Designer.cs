@@ -83,6 +83,16 @@ namespace Sistema_Facturacion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap guardar_datos {
+            get {
+                object obj = ResourceManager.GetObject("guardar-datos", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mas {
             get {
                 object obj = ResourceManager.GetObject("mas", resourceCulture);

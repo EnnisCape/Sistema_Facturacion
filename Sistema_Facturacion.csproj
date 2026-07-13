@@ -131,6 +131,7 @@
     <None Include="Resources\mas3.png" />
     <None Include="Resources\borrar.png" />
     <None Include="Resources\borrar2.png" />
+    <None Include="Resources\guardar-datos.png" />
     <Content Include="Scripdb\Scrip db.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
