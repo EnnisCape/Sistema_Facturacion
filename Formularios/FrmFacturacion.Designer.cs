@@ -39,7 +39,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(626, 37);
+            this.panel1.Size = new System.Drawing.Size(810, 37);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -48,7 +48,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(626, 37);
+            this.label1.Size = new System.Drawing.Size(810, 37);
             this.label1.TabIndex = 0;
             this.label1.Text = "Facturación";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -57,7 +57,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(626, 450);
+            this.ClientSize = new System.Drawing.Size(810, 520);
             this.Controls.Add(this.panel1);
             this.Name = "FrmFacturacion";
             this.Text = "FrmFacturacion";

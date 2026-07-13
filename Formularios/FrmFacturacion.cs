@@ -8,7 +8,5 @@ namespace Sistema_Facturacion.Formularios
         {
             InitializeComponent();
         }
-
-        
     }
 }
