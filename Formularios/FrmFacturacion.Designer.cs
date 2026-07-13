@@ -235,7 +235,7 @@
             this.cBCliente.Name = "cBCliente";
             this.cBCliente.Size = new System.Drawing.Size(301, 21);
             this.cBCliente.TabIndex = 1;
-            this.cBCliente.SelectedIndexChanged += new System.EventHandler(this.cBCliente_SelectedIndexChanged);
+            this.cBCliente.SelectionChangeCommitted += new System.EventHandler(this.cBCliente_SelectionChangeCommitted);
             // 
             // groupBox2
             // 
@@ -275,7 +275,6 @@
             this.lBDireccion.Name = "lBDireccion";
             this.lBDireccion.Size = new System.Drawing.Size(256, 28);
             this.lBDireccion.TabIndex = 5;
-            this.lBDireccion.Text = "Calle30, La penda,  La vega";
             this.lBDireccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lBCedula
@@ -286,7 +285,6 @@
             this.lBCedula.Name = "lBCedula";
             this.lBCedula.Size = new System.Drawing.Size(256, 28);
             this.lBCedula.TabIndex = 4;
-            this.lBCedula.Text = "047-098979-4";
             this.lBCedula.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label5

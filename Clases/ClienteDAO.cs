@@ -20,7 +20,7 @@ namespace Sistema_Facturacion.Clases
             {
                 SqlConnection cn = conexion.AbrirConexion();
 
-                string consulta = "SELECT [Id_cliente],[Nombre],[Cedula],[Estado_cliente] FROM [SistemaFacturacion].[dbo].[Cliente]";
+                string consulta = "SELECT [Id_cliente],[Nombre],[Cedula],[Telefono], [Direccion], [Email],[Estado_cliente] FROM [dbo].[Cliente] WHERE Estado_cliente = 'A'";
 
                 SqlDataAdapter da = new SqlDataAdapter(consulta, cn);
 
@@ -30,12 +30,9 @@ namespace Sistema_Facturacion.Clases
             }
             catch
             {
-
                 conexion.CerrarConexion();
             }
-
             return tabla;
-
         }
 
     }
