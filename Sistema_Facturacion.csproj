@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\ClienteDAO.cs" />
     <Compile Include="Clases\RolDAO.cs" />
     <Compile Include="Clases\UsuarioDAO.cs" />
     <Compile Include="Conexion\Conexion.cs" />

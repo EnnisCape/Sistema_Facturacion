@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using Sistema_Facturacion.Clases;
+using System.Windows.Forms;
 
 namespace Sistema_Facturacion.Formularios
 {
@@ -8,6 +9,7 @@ namespace Sistema_Facturacion.Formularios
         {
             InitializeComponent();
             dtpFechaFactura.Value = System.DateTime.Now;
+            ClienteDAO clientes = new ClienteDAO(); 
         }
 
         private void btnAgregarArticulo_Click(object sender, System.EventArgs e) {
@@ -32,6 +34,11 @@ namespace Sistema_Facturacion.Formularios
 
         private void cBCliente_SelectedIndexChanged(object sender, System.EventArgs e) {
 
+        }
+
+        private void FrmFacturacion_Load(object sender, System.EventArgs e)
+        {
+            
         }
     }
 }

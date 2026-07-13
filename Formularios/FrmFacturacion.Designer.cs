@@ -59,19 +59,19 @@
             this.cBProducto = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.nuCantidad = new System.Windows.Forms.NumericUpDown();
+            this.btnAgregarArticulo = new System.Windows.Forms.Button();
+            this.btnEliniarArticulo = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.lBItebis = new System.Windows.Forms.Label();
             this.lBSubtotal = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.btnCrearFactura = new System.Windows.Forms.Button();
-            this.btnAgregarArticulo = new System.Windows.Forms.Button();
-            this.btnEliniarArticulo = new System.Windows.Forms.Button();
-            this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -446,134 +446,6 @@
             0});
             this.nuCantidad.ValueChanged += new System.EventHandler(this.nuCantidad_ValueChanged);
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.tableLayoutPanel5);
-            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.groupBox5.Location = new System.Drawing.Point(633, 449);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(314, 101);
-            this.groupBox5.TabIndex = 4;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "TOTALES";
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.01299F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.98701F));
-            this.tableLayoutPanel5.Controls.Add(this.label14, 1, 2);
-            this.tableLayoutPanel5.Controls.Add(this.label13, 0, 2);
-            this.tableLayoutPanel5.Controls.Add(this.lBItebis, 1, 1);
-            this.tableLayoutPanel5.Controls.Add(this.lBSubtotal, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.label11, 0, 1);
-            this.tableLayoutPanel5.Controls.Add(this.label12, 0, 0);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 16);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 3;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(308, 82);
-            this.tableLayoutPanel5.TabIndex = 4;
-            // 
-            // lBItebis
-            // 
-            this.lBItebis.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lBItebis.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lBItebis.Location = new System.Drawing.Point(116, 27);
-            this.lBItebis.Name = "lBItebis";
-            this.lBItebis.Size = new System.Drawing.Size(189, 27);
-            this.lBItebis.TabIndex = 5;
-            this.lBItebis.Text = "$160";
-            this.lBItebis.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lBSubtotal
-            // 
-            this.lBSubtotal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lBSubtotal.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lBSubtotal.Location = new System.Drawing.Point(116, 0);
-            this.lBSubtotal.Name = "lBSubtotal";
-            this.lBSubtotal.Size = new System.Drawing.Size(189, 27);
-            this.lBSubtotal.TabIndex = 4;
-            this.lBSubtotal.Text = "$1,800";
-            this.lBSubtotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label11
-            // 
-            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(3, 27);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(107, 27);
-            this.label11.TabIndex = 3;
-            this.label11.Text = "ITBIS (18%):";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label12
-            // 
-            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label12.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(3, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(107, 27);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Subtotal:";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label13
-            // 
-            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(3, 54);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(107, 28);
-            this.label13.TabIndex = 6;
-            this.label13.Text = "GENERAL:";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label14
-            // 
-            this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label14.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(116, 54);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(189, 28);
-            this.label14.TabIndex = 7;
-            this.label14.Text = "$1,960";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // tableLayoutPanel6
-            // 
-            this.tableLayoutPanel6.ColumnCount = 1;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Controls.Add(this.btnCrearFactura, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.btnCancelar, 0, 1);
-            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(470, 449);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 2;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(163, 101);
-            this.tableLayoutPanel6.TabIndex = 5;
-            // 
-            // btnCrearFactura
-            // 
-            this.btnCrearFactura.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCrearFactura.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCrearFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCrearFactura.Image = global::Sistema_Facturacion.Properties.Resources.guardar_datos;
-            this.btnCrearFactura.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCrearFactura.Location = new System.Drawing.Point(3, 3);
-            this.btnCrearFactura.Name = "btnCrearFactura";
-            this.btnCrearFactura.Size = new System.Drawing.Size(157, 44);
-            this.btnCrearFactura.TabIndex = 5;
-            this.btnCrearFactura.Text = "CREAR FACTURA";
-            this.btnCrearFactura.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCrearFactura.UseVisualStyleBackColor = true;
-            // 
             // btnAgregarArticulo
             // 
             this.btnAgregarArticulo.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -622,6 +494,134 @@
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.tableLayoutPanel5);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Right;
+            this.groupBox5.Location = new System.Drawing.Point(633, 449);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(314, 101);
+            this.groupBox5.TabIndex = 4;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "TOTALES";
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.01299F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.98701F));
+            this.tableLayoutPanel5.Controls.Add(this.label14, 1, 2);
+            this.tableLayoutPanel5.Controls.Add(this.label13, 0, 2);
+            this.tableLayoutPanel5.Controls.Add(this.lBItebis, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.lBSubtotal, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label11, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.label12, 0, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 3;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(308, 82);
+            this.tableLayoutPanel5.TabIndex = 4;
+            // 
+            // label14
+            // 
+            this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label14.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(117, 54);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(188, 28);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "$1,960";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label13
+            // 
+            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label13.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(3, 54);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(108, 28);
+            this.label13.TabIndex = 6;
+            this.label13.Text = "GENERAL:";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lBItebis
+            // 
+            this.lBItebis.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lBItebis.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lBItebis.Location = new System.Drawing.Point(117, 27);
+            this.lBItebis.Name = "lBItebis";
+            this.lBItebis.Size = new System.Drawing.Size(188, 27);
+            this.lBItebis.TabIndex = 5;
+            this.lBItebis.Text = "$160";
+            this.lBItebis.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lBSubtotal
+            // 
+            this.lBSubtotal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lBSubtotal.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lBSubtotal.Location = new System.Drawing.Point(117, 0);
+            this.lBSubtotal.Name = "lBSubtotal";
+            this.lBSubtotal.Size = new System.Drawing.Size(188, 27);
+            this.lBSubtotal.TabIndex = 4;
+            this.lBSubtotal.Text = "$1,800";
+            this.lBSubtotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label11
+            // 
+            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label11.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(3, 27);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(108, 27);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "ITBIS (18%):";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label12
+            // 
+            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label12.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(3, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(108, 27);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Subtotal:";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 1;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Controls.Add(this.btnCrearFactura, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.btnCancelar, 0, 1);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Right;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(470, 449);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 2;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(163, 101);
+            this.tableLayoutPanel6.TabIndex = 5;
+            // 
+            // btnCrearFactura
+            // 
+            this.btnCrearFactura.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCrearFactura.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCrearFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCrearFactura.Image = global::Sistema_Facturacion.Properties.Resources.guardar_datos;
+            this.btnCrearFactura.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCrearFactura.Location = new System.Drawing.Point(3, 3);
+            this.btnCrearFactura.Name = "btnCrearFactura";
+            this.btnCrearFactura.Size = new System.Drawing.Size(157, 44);
+            this.btnCrearFactura.TabIndex = 5;
+            this.btnCrearFactura.Text = "CREAR FACTURA";
+            this.btnCrearFactura.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCrearFactura.UseVisualStyleBackColor = true;
+            // 
             // btnCancelar
             // 
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -648,6 +648,7 @@
             this.Name = "FrmFacturacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmFacturacion";
+            this.Load += new System.EventHandler(this.FrmFacturacion_Load);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
