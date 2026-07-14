@@ -96,7 +96,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(947, 37);
+            this.panel1.Size = new System.Drawing.Size(926, 37);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -105,7 +105,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(947, 37);
+            this.label1.Size = new System.Drawing.Size(926, 37);
             this.label1.TabIndex = 0;
             this.label1.Text = "Facturación";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -114,8 +114,8 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.00106F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.73645F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.68129F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.06236F));
             this.tableLayoutPanel1.Controls.Add(this.groupBox3, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupBox2, 1, 0);
@@ -124,7 +124,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(941, 83);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(920, 83);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // groupBox3
@@ -132,9 +132,9 @@
             this.groupBox3.Controls.Add(this.tableLayoutPanel4);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(682, 3);
+            this.groupBox3.Location = new System.Drawing.Point(637, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(256, 77);
+            this.groupBox3.Size = new System.Drawing.Size(280, 77);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Información de Factura";
@@ -154,25 +154,25 @@
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(250, 56);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(274, 56);
             this.tableLayoutPanel4.TabIndex = 3;
             // 
             // dtpFechaFactura
             // 
             this.dtpFechaFactura.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtpFechaFactura.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaFactura.Location = new System.Drawing.Point(81, 3);
+            this.dtpFechaFactura.Location = new System.Drawing.Point(88, 3);
             this.dtpFechaFactura.Name = "dtpFechaFactura";
-            this.dtpFechaFactura.Size = new System.Drawing.Size(166, 22);
+            this.dtpFechaFactura.Size = new System.Drawing.Size(183, 22);
             this.dtpFechaFactura.TabIndex = 3;
             // 
             // lBVendedor
             // 
             this.lBVendedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lBVendedor.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lBVendedor.Location = new System.Drawing.Point(81, 28);
+            this.lBVendedor.Location = new System.Drawing.Point(88, 28);
             this.lBVendedor.Name = "lBVendedor";
-            this.lBVendedor.Size = new System.Drawing.Size(166, 28);
+            this.lBVendedor.Size = new System.Drawing.Size(183, 28);
             this.lBVendedor.TabIndex = 5;
             this.lBVendedor.Text = "admin";
             this.lBVendedor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -183,7 +183,7 @@
             this.label7.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(3, 28);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(72, 28);
+            this.label7.Size = new System.Drawing.Size(79, 28);
             this.label7.TabIndex = 3;
             this.label7.Text = "Vendedor";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -194,7 +194,7 @@
             this.label8.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(3, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(72, 28);
+            this.label8.Size = new System.Drawing.Size(79, 28);
             this.label8.TabIndex = 1;
             this.label8.Text = "Fecha";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -211,7 +211,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46.37681F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 53.62319F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(307, 77);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(300, 77);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // label2
@@ -220,7 +220,7 @@
             this.label2.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(301, 35);
+            this.label2.Size = new System.Drawing.Size(294, 35);
             this.label2.TabIndex = 0;
             this.label2.Text = "Seleccionar Cliente:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -233,7 +233,7 @@
             this.cBCliente.FormattingEnabled = true;
             this.cBCliente.Location = new System.Drawing.Point(3, 38);
             this.cBCliente.Name = "cBCliente";
-            this.cBCliente.Size = new System.Drawing.Size(301, 21);
+            this.cBCliente.Size = new System.Drawing.Size(294, 21);
             this.cBCliente.TabIndex = 1;
             this.cBCliente.SelectionChangeCommitted += new System.EventHandler(this.cBCliente_SelectionChangeCommitted);
             // 
@@ -242,9 +242,9 @@
             this.groupBox2.Controls.Add(this.tableLayoutPanel3);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(316, 3);
+            this.groupBox2.Location = new System.Drawing.Point(309, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(360, 77);
+            this.groupBox2.Size = new System.Drawing.Size(322, 77);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Información de Cliente";
@@ -252,8 +252,8 @@
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.9887F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 74.0113F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.08108F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.91892F));
             this.tableLayoutPanel3.Controls.Add(this.lBDireccion, 1, 1);
             this.tableLayoutPanel3.Controls.Add(this.lBCedula, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.label5, 0, 1);
@@ -264,16 +264,16 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(354, 56);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(316, 56);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
             // lBDireccion
             // 
             this.lBDireccion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lBDireccion.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lBDireccion.Location = new System.Drawing.Point(95, 28);
+            this.lBDireccion.Location = new System.Drawing.Point(101, 28);
             this.lBDireccion.Name = "lBDireccion";
-            this.lBDireccion.Size = new System.Drawing.Size(256, 28);
+            this.lBDireccion.Size = new System.Drawing.Size(212, 28);
             this.lBDireccion.TabIndex = 5;
             this.lBDireccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -281,9 +281,9 @@
             // 
             this.lBCedula.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lBCedula.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lBCedula.Location = new System.Drawing.Point(95, 0);
+            this.lBCedula.Location = new System.Drawing.Point(101, 0);
             this.lBCedula.Name = "lBCedula";
-            this.lBCedula.Size = new System.Drawing.Size(256, 28);
+            this.lBCedula.Size = new System.Drawing.Size(212, 28);
             this.lBCedula.TabIndex = 4;
             this.lBCedula.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -293,7 +293,7 @@
             this.label5.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(3, 28);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 28);
+            this.label5.Size = new System.Drawing.Size(92, 28);
             this.label5.TabIndex = 3;
             this.label5.Text = "Dirección:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -304,7 +304,7 @@
             this.label3.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(3, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 28);
+            this.label3.Size = new System.Drawing.Size(92, 28);
             this.label3.TabIndex = 1;
             this.label3.Text = "Cedula:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -315,7 +315,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 37);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(947, 102);
+            this.groupBox1.Size = new System.Drawing.Size(926, 102);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "DATOS DEL CLIENTE";
@@ -328,7 +328,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(0, 139);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(947, 310);
+            this.groupBox4.Size = new System.Drawing.Size(926, 310);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Agregar Artículos";
@@ -339,7 +339,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 56);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(941, 251);
+            this.panel2.Size = new System.Drawing.Size(920, 251);
             this.panel2.TabIndex = 3;
             // 
             // lVProductos
@@ -349,15 +349,19 @@
             this.Cantidad,
             this.PrecioUnitario,
             this.subTotal});
+            this.lVProductos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lVProductos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lVProductos.FullRowSelect = true;
             this.lVProductos.GridLines = true;
             this.lVProductos.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lVProductos.HideSelection = false;
             this.lVProductos.Location = new System.Drawing.Point(0, 0);
             this.lVProductos.Name = "lVProductos";
-            this.lVProductos.Size = new System.Drawing.Size(941, 251);
+            this.lVProductos.Size = new System.Drawing.Size(920, 251);
             this.lVProductos.TabIndex = 2;
             this.lVProductos.UseCompatibleStateImageBehavior = false;
+            this.lVProductos.View = System.Windows.Forms.View.Details;
+            this.lVProductos.Visible = false;
             // 
             // Producto
             // 
@@ -387,7 +391,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 18);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(941, 38);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(920, 38);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // label4
@@ -498,7 +502,7 @@
             // 
             this.groupBox5.Controls.Add(this.tableLayoutPanel5);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.groupBox5.Location = new System.Drawing.Point(633, 449);
+            this.groupBox5.Location = new System.Drawing.Point(612, 449);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(314, 101);
             this.groupBox5.TabIndex = 4;
@@ -599,7 +603,7 @@
             this.tableLayoutPanel6.Controls.Add(this.btnCrearFactura, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.btnCancelar, 0, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(470, 449);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(449, 449);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -639,7 +643,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(947, 550);
+            this.ClientSize = new System.Drawing.Size(926, 550);
             this.Controls.Add(this.tableLayoutPanel6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);

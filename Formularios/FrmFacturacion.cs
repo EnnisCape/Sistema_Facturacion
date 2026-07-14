@@ -25,6 +25,7 @@ namespace Sistema_Facturacion.Formularios
             dtpFechaFactura.Value = System.DateTime.Now;
             clientes = new ClienteDAO();
             producto = new ProductoDAO();
+            AutoAjustarColumnasProporcional();
         }
 
         private void btnAgregarArticulo_Click(object sender, System.EventArgs e)
@@ -40,6 +41,7 @@ namespace Sistema_Facturacion.Formularios
 
         private void AgregaProductoALista()
         {
+            lVProductos.Visible = true;
             // 2. Extraer los datos del DataRowView (usa los nombres exactos de tu consulta SQL/DataTable)
              idProductoP = Convert.ToInt32(ProductoSeleccionado["Id_producto"]);
              nombreP = ProductoSeleccionado["Nombre"].ToString();
@@ -54,8 +56,8 @@ namespace Sistema_Facturacion.Formularios
 
             // 6. Agregar las subcolumnas en el orden en que creaste el ListView
             item.SubItems.Add(cantidadSeleccionada.ToString());               // Columna Cantidad
-            item.SubItems.Add(precioP.ToString("N2"));             // Columna Precio (Formato 0.00)
-            item.SubItems.Add(subtotalP.ToString("N2"));           // Columna Subtotal (Formato 0.00)
+            item.SubItems.Add(precioP.ToString("C2"));             // Columna Precio (Formato 0.00)
+            item.SubItems.Add(subtotalP.ToString("C2"));           // Columna Subtotal (Formato 0.00)
 
             // 7. Guardar el ID del producto en el Tag para cuando guardes en la BD
             item.Tag = idProductoP;
@@ -65,6 +67,10 @@ namespace Sistema_Facturacion.Formularios
 
             // (Opcional) Recalcular el total de la pantalla
             CalcularTotalGeneral();
+            nuCantidad.Value = 1;
+            nuCantidad.Enabled = false;
+            cBProducto.SelectedIndex = -1;
+            ProductoSeleccionado = null;
         }
 
         private void CalcularTotalGeneral()
@@ -207,6 +213,18 @@ namespace Sistema_Facturacion.Formularios
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void AutoAjustarColumnasProporcional()
+        {
+            // 1. Obtener el ancho real disponible dentro del ListView (sin contar los bordes)
+            int anchoTotal = lVProductos.ClientSize.Width;
+
+            // 2. Repartir el ancho usando porcentajes (Asegúrate de que sumen 1.00 o 100%)
+            lVProductos.Columns[0].Width = (int)(anchoTotal * 0.45); // Producto: 45%
+            lVProductos.Columns[1].Width = (int)(anchoTotal * 0.15); // Cantidad: 15%
+            lVProductos.Columns[2].Width = (int)(anchoTotal * 0.20); // Precio: 20%
+            lVProductos.Columns[3].Width = (int)(anchoTotal * 0.20); // Subtotal: 20%
         }
     }
 }
