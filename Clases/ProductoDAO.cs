@@ -8,11 +8,12 @@ using System.Threading.Tasks;
 
 namespace Sistema_Facturacion.Clases
 {
-    public class ClienteDAO
+    public class ProductoDAO
     {
         Conexion conexion = new Conexion();
 
-        public DataTable MostrarClientes()
+
+        public DataTable MostrarProductos()
         {
             DataTable tabla = new DataTable();
 
@@ -20,7 +21,7 @@ namespace Sistema_Facturacion.Clases
             {
                 SqlConnection cn = conexion.AbrirConexion();
 
-                string consulta = "SELECT [Id_cliente],[Nombre],[Cedula],[Telefono], [Direccion], [Email],[Estado_cliente] FROM [dbo].[Cliente] WHERE Estado_cliente = 'A'";
+                string consulta = "SELECT dbo.Producto.* FROM dbo.Producto WHERE Estado = 1";
 
                 SqlDataAdapter da = new SqlDataAdapter(consulta, cn);
 
@@ -35,9 +36,8 @@ namespace Sistema_Facturacion.Clases
             return tabla;
         }
 
-        //crea cliente en la db desde visual studio
-        
-        //se edita cliente desde visual 
+
+
 
     }
 }

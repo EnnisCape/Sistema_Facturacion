@@ -405,12 +405,14 @@
             // 
             this.cBProducto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cBProducto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cBProducto.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cBProducto.FormattingEnabled = true;
             this.cBProducto.Location = new System.Drawing.Point(73, 3);
             this.cBProducto.Name = "cBProducto";
             this.cBProducto.Size = new System.Drawing.Size(234, 24);
             this.cBProducto.TabIndex = 1;
             this.cBProducto.SelectedIndexChanged += new System.EventHandler(this.cBProducto_SelectedIndexChanged);
+            this.cBProducto.SelectionChangeCommitted += new System.EventHandler(this.cBProducto_SelectionChangeCommitted);
             // 
             // label6
             // 
@@ -426,6 +428,7 @@
             // nuCantidad
             // 
             this.nuCantidad.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.nuCantidad.Enabled = false;
             this.nuCantidad.Location = new System.Drawing.Point(383, 8);
             this.nuCantidad.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
             this.nuCantidad.Minimum = new decimal(new int[] {
@@ -631,6 +634,7 @@
             this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // FrmFacturacion
             // 
