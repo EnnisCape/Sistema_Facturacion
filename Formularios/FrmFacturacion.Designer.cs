@@ -411,7 +411,6 @@
             this.cBProducto.Name = "cBProducto";
             this.cBProducto.Size = new System.Drawing.Size(234, 24);
             this.cBProducto.TabIndex = 1;
-            this.cBProducto.SelectedIndexChanged += new System.EventHandler(this.cBProducto_SelectedIndexChanged);
             this.cBProducto.SelectionChangeCommitted += new System.EventHandler(this.cBProducto_SelectionChangeCommitted);
             // 
             // label6

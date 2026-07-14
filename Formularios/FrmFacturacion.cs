@@ -9,8 +9,15 @@ namespace Sistema_Facturacion.Formularios
     {
         ClienteDAO clientes;
         ProductoDAO producto;
-        private int cantidadProducto;
+        DataRowView ProductoSeleccionado;
+        DataRowView clienteSeleccionado;
 
+        // Para calculo de factura
+        int idProductoP;
+        string nombreP;
+        private int cantidadProductodb;
+        decimal precioP,cantidadSeleccionada;
+        decimal subtotalP;
 
         public FrmFacturacion()
         {
@@ -22,7 +29,47 @@ namespace Sistema_Facturacion.Formularios
 
         private void btnAgregarArticulo_Click(object sender, System.EventArgs e)
         {
+            if (ProductoSeleccionado == null) {
+                MessageBox.Show("No hay Productos seleccionado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            AgregaProductoALista();
 
+
+        }
+
+        private void AgregaProductoALista()
+        {
+            // 2. Extraer los datos del DataRowView (usa los nombres exactos de tu consulta SQL/DataTable)
+             idProductoP = Convert.ToInt32(ProductoSeleccionado["Id_producto"]);
+             nombreP = ProductoSeleccionado["Nombre"].ToString();
+             precioP = Convert.ToDecimal(ProductoSeleccionado["Precio"]);
+           
+
+            // 4. Calcular el subtotalP
+             subtotalP = cantidadSeleccionada * precioP;
+
+            // 5. Crear el ListViewItem con la primera columna (Nombre)
+            ListViewItem item = new ListViewItem(nombreP);
+
+            // 6. Agregar las subcolumnas en el orden en que creaste el ListView
+            item.SubItems.Add(cantidadSeleccionada.ToString());               // Columna Cantidad
+            item.SubItems.Add(precioP.ToString("N2"));             // Columna Precio (Formato 0.00)
+            item.SubItems.Add(subtotalP.ToString("N2"));           // Columna Subtotal (Formato 0.00)
+
+            // 7. Guardar el ID del producto en el Tag para cuando guardes en la BD
+            item.Tag = idProductoP;
+
+            // 8. Insertar la fila en tu ListView
+            lVProductos.Items.Add(item);
+
+            // (Opcional) Recalcular el total de la pantalla
+            CalcularTotalGeneral();
+        }
+
+        private void CalcularTotalGeneral()
+        {
+            
         }
 
         private void btnEliniarArticulo_Click(object sender, System.EventArgs e)
@@ -37,17 +84,11 @@ namespace Sistema_Facturacion.Formularios
 
         private void nuCantidad_ValueChanged(object sender, System.EventArgs e)
         {
-            if (nuCantidad.Value > cantidadProducto) {
+            if (nuCantidad.Value > cantidadProductodb) {
                 MessageBox.Show("Limite maximo de producto en la base de datos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 nuCantidad.Value -= 1;
             }
-
-           
-        }
-
-        private void cBProducto_SelectedIndexChanged(object sender, System.EventArgs e)
-        {
-
+            cantidadSeleccionada = nuCantidad.Value;
         }
 
         private void FrmFacturacion_Load(object sender, System.EventArgs e)
@@ -100,11 +141,11 @@ namespace Sistema_Facturacion.Formularios
                 return;
             }
             // 2. Convertir el SelectedItem al tipo DataRowView (la fila de la tabla)
-            DataRowView filaSeleccionada = (DataRowView)cBCliente.SelectedItem;
+             clienteSeleccionado = (DataRowView)cBCliente.SelectedItem;
 
             // 3. Extraer los datos extra usando el nombre exacto de tus columnas en la BD
-            lBCedula.Text = filaSeleccionada["Cedula"].ToString();
-            lBDireccion.Text = filaSeleccionada["Direccion"].ToString();
+            lBCedula.Text = clienteSeleccionado["Cedula"].ToString();
+            lBDireccion.Text = clienteSeleccionado["Direccion"].ToString();
         }
 
         private void ObtenerProductos() {
@@ -151,16 +192,16 @@ namespace Sistema_Facturacion.Formularios
                 return;
             }
             // 2. Convertir el SelectedItem al tipo DataRowView (la fila de la tabla)
-            DataRowView filaSeleccionada = (DataRowView)cBProducto.SelectedItem;
+             ProductoSeleccionado = (DataRowView)cBProducto.SelectedItem;
 
-            cantidadProducto = Convert.ToInt32(filaSeleccionada["Stock"].ToString());
+            cantidadProductodb = Convert.ToInt32(ProductoSeleccionado["Stock"].ToString());
             nuCantidad.Enabled = true;
 
             // 3. Extraer los datos extra usando el nombre exacto de tus columnas en la BD
-            //lBCedula.Text = filaSeleccionada["Cedula"].ToString();
-            //lBDireccion.Text = filaSeleccionada["Direccion"].ToString();
+            //lBCedula.Text = ProductoSeleccionado["Cedula"].ToString();
+            //lBDireccion.Text = ProductoSeleccionado["Direccion"].ToString();
 
-            // MessageBox.Show($"Productos seleccionado {filaSeleccionada["Descripcion"]}", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // MessageBox.Show($"Productos seleccionado {ProductoSeleccionado["Descripcion"]}", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
