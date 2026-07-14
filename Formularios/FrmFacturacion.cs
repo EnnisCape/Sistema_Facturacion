@@ -1,6 +1,7 @@
 ﻿using Sistema_Facturacion.Clases;
 using System;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Windows.Forms;
 
 namespace Sistema_Facturacion.Formularios
@@ -11,13 +12,18 @@ namespace Sistema_Facturacion.Formularios
         ProductoDAO producto;
         DataRowView ProductoSeleccionado;
         DataRowView clienteSeleccionado;
+        // Esta variable siempre tendrá la fila seleccionada actual (o null si no hay nada seleccionado)
+        private ListViewItem filaSeleccionada;
 
         // Para calculo de factura
         int idProductoP;
         string nombreP;
         private int cantidadProductodb;
-        decimal precioP,cantidadSeleccionada;
+        decimal precioP, cantidadSeleccionada = 1;
         decimal subtotalP;
+        decimal TotalG;
+        decimal subtotalRestar;
+        int idProductoInTag;
 
         public FrmFacturacion()
         {
@@ -30,26 +36,25 @@ namespace Sistema_Facturacion.Formularios
 
         private void btnAgregarArticulo_Click(object sender, System.EventArgs e)
         {
-            if (ProductoSeleccionado == null) {
+            if (ProductoSeleccionado == null)
+            {
                 MessageBox.Show("No hay Productos seleccionado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             AgregaProductoALista();
-
-
         }
 
         private void AgregaProductoALista()
         {
             lVProductos.Visible = true;
             // 2. Extraer los datos del DataRowView (usa los nombres exactos de tu consulta SQL/DataTable)
-             idProductoP = Convert.ToInt32(ProductoSeleccionado["Id_producto"]);
-             nombreP = ProductoSeleccionado["Nombre"].ToString();
-             precioP = Convert.ToDecimal(ProductoSeleccionado["Precio"]);
-           
+            idProductoP = Convert.ToInt32(ProductoSeleccionado["Id_producto"]);
+            nombreP = ProductoSeleccionado["Nombre"].ToString();
+            precioP = Convert.ToDecimal(ProductoSeleccionado["Precio"]);
+
 
             // 4. Calcular el subtotalP
-             subtotalP = cantidadSeleccionada * precioP;
+            subtotalP = cantidadSeleccionada * precioP;
 
             // 5. Crear el ListViewItem con la primera columna (Nombre)
             ListViewItem item = new ListViewItem(nombreP);
@@ -66,21 +71,66 @@ namespace Sistema_Facturacion.Formularios
             lVProductos.Items.Add(item);
 
             // (Opcional) Recalcular el total de la pantalla
-            CalcularTotalGeneral();
+            CalcularTotalGeneral(true);
             nuCantidad.Value = 1;
             nuCantidad.Enabled = false;
             cBProducto.SelectedIndex = -1;
             ProductoSeleccionado = null;
         }
 
-        private void CalcularTotalGeneral()
+        private void CalcularTotalGeneral(bool oper)
         {
-            
+            if (oper)
+            {
+                TotalG += subtotalP;
+                subtotalP = 0;
+            }
+            else
+            {
+                TotalG -= subtotalRestar;
+                subtotalRestar = 0;
+            }
+
+            lBtotal.Text = TotalG.ToString("C2");
         }
 
         private void btnEliniarArticulo_Click(object sender, System.EventArgs e)
         {
+            if (idProductoInTag == 0)
+            {
+                MessageBox.Show("No hay Producto seleccionado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            // 1. Mostramos el MessageBox con botones de OK y Cancelar
+            DialogResult resultado = MessageBox.Show(
+                "¿Está seguro de que desea procesar esta acción?", // Mensaje
+                "Confirmación",                                    // Título de la ventana
+                MessageBoxButtons.OKCancel,                        // Botones que se mostrarán
+                MessageBoxIcon.Question                            // Icono de pregunta
+            );
+
+            // 2. Evaluamos si el usuario hizo clic en OK
+            if (resultado == DialogResult.OK)
+            {
+                CalcularTotalGeneral(false);
+
+                // Recorremos todos los elementos actualmente agregados en el ListView
+                foreach (ListViewItem item in lVProductos.Items)
+                {
+                    // 1. Verificamos que el Tag no sea nulo y lo convertimos a int para comparar
+                    if (item.Tag != null && Convert.ToInt32(item.Tag) == idProductoInTag)
+                    {
+                        // 2. Si coincide, lo removemos del ListView
+                        lVProductos.Items.Remove(item);
+
+                        // 4. Rompemos el ciclo (break) porque ya encontramos y eliminamos el elemento
+                        break;
+                    }
+                }
+                
+                idProductoInTag = 0;
+            }
         }
 
         private void btnLimpiar_Click(object sender, System.EventArgs e)
@@ -90,7 +140,8 @@ namespace Sistema_Facturacion.Formularios
 
         private void nuCantidad_ValueChanged(object sender, System.EventArgs e)
         {
-            if (nuCantidad.Value > cantidadProductodb) {
+            if (nuCantidad.Value > cantidadProductodb)
+            {
                 MessageBox.Show("Limite maximo de producto en la base de datos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 nuCantidad.Value -= 1;
             }
@@ -147,14 +198,15 @@ namespace Sistema_Facturacion.Formularios
                 return;
             }
             // 2. Convertir el SelectedItem al tipo DataRowView (la fila de la tabla)
-             clienteSeleccionado = (DataRowView)cBCliente.SelectedItem;
+            clienteSeleccionado = (DataRowView)cBCliente.SelectedItem;
 
             // 3. Extraer los datos extra usando el nombre exacto de tus columnas en la BD
             lBCedula.Text = clienteSeleccionado["Cedula"].ToString();
             lBDireccion.Text = clienteSeleccionado["Direccion"].ToString();
         }
 
-        private void ObtenerProductos() {
+        private void ObtenerProductos()
+        {
 
             // 1. Llamas a tu método que retorna el DataTable
             DataTable dtProductos = producto.MostrarProductos();
@@ -198,7 +250,7 @@ namespace Sistema_Facturacion.Formularios
                 return;
             }
             // 2. Convertir el SelectedItem al tipo DataRowView (la fila de la tabla)
-             ProductoSeleccionado = (DataRowView)cBProducto.SelectedItem;
+            ProductoSeleccionado = (DataRowView)cBProducto.SelectedItem;
 
             cantidadProductodb = Convert.ToInt32(ProductoSeleccionado["Stock"].ToString());
             nuCantidad.Enabled = true;
@@ -214,6 +266,72 @@ namespace Sistema_Facturacion.Formularios
         {
             this.Close();
         }
+
+        private void lVProductos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // 1. Validar que realmente haya un elemento seleccionado 
+            // (es necesario porque al cambiar de selección el evento a veces se dispara con 0 elementos)
+            if (lVProductos.SelectedItems.Count > 0)
+            {
+                // 2. Asignar la fila seleccionada a nuestra variable global
+                filaSeleccionada = lVProductos.SelectedItems[0];
+
+                // Obtener el ID oculto del producto que guardamos en el Tag
+                idProductoInTag = (int)filaSeleccionada.Tag;
+
+                subtotalRestar = Convert.ToDecimal(filaSeleccionada.SubItems[3].Text.Substring(1)); // Cuarta columna (Subtotal)
+
+            }
+            else
+            {
+                // Si el usuario hace clic en el espacio vacío del ListView, limpiamos la variable
+                filaSeleccionada = null;
+            }
+        }
+
+        private void btnCrearFactura_Click(object sender, EventArgs e)
+        {
+            if (clienteSeleccionado == null || lVProductos.Items.Count == 0) {
+
+                MessageBox.Show("Faltan elementos importantes de esta factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult resultado = MessageBox.Show("¿Desea facturar los cambios?", "Guardar", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if (resultado == DialogResult.Yes)
+            {
+                // Entra aquí solo si hacen clic en "Sí"
+
+
+
+
+
+                idProductoInTag = 0;
+                TotalG = 0;
+                lBtotal.Text = TotalG.ToString("C2");
+                clienteSeleccionado = null;
+                ProductoSeleccionado = null;
+                cBCliente.SelectedIndex = -1;
+                // 1. Elimina todas las filas (artículos) del ListView
+                lVProductos.Items.Clear();
+                lBCedula.Text = string.Empty;
+                lBDireccion.Text = string.Empty;
+
+
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
 
         private void AutoAjustarColumnasProporcional()
         {

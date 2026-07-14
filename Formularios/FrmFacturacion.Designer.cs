@@ -60,15 +60,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.nuCantidad = new System.Windows.Forms.NumericUpDown();
             this.btnAgregarArticulo = new System.Windows.Forms.Button();
-            this.btnEliniarArticulo = new System.Windows.Forms.Button();
+            this.btnEliminarArticulo = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.lBItebis = new System.Windows.Forms.Label();
-            this.lBSubtotal = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.lBtotal = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.btnCrearFactura = new System.Windows.Forms.Button();
@@ -362,6 +358,7 @@
             this.lVProductos.UseCompatibleStateImageBehavior = false;
             this.lVProductos.View = System.Windows.Forms.View.Details;
             this.lVProductos.Visible = false;
+            this.lVProductos.SelectedIndexChanged += new System.EventHandler(this.lVProductos_SelectedIndexChanged);
             // 
             // Producto
             // 
@@ -386,7 +383,7 @@
             this.flowLayoutPanel1.Controls.Add(this.label6);
             this.flowLayoutPanel1.Controls.Add(this.nuCantidad);
             this.flowLayoutPanel1.Controls.Add(this.btnAgregarArticulo);
-            this.flowLayoutPanel1.Controls.Add(this.btnEliniarArticulo);
+            this.flowLayoutPanel1.Controls.Add(this.btnEliminarArticulo);
             this.flowLayoutPanel1.Controls.Add(this.btnLimpiar);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 18);
@@ -466,25 +463,26 @@
             this.btnAgregarArticulo.UseVisualStyleBackColor = true;
             this.btnAgregarArticulo.Click += new System.EventHandler(this.btnAgregarArticulo_Click);
             // 
-            // btnEliniarArticulo
+            // btnEliminarArticulo
             // 
-            this.btnEliniarArticulo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEliniarArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliniarArticulo.Image = global::Sistema_Facturacion.Properties.Resources.borrar;
-            this.btnEliniarArticulo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliniarArticulo.Location = new System.Drawing.Point(607, 3);
-            this.btnEliniarArticulo.Name = "btnEliniarArticulo";
-            this.btnEliniarArticulo.Size = new System.Drawing.Size(148, 33);
-            this.btnEliniarArticulo.TabIndex = 5;
-            this.btnEliniarArticulo.Text = "Eliminar Artículo";
-            this.btnEliniarArticulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliniarArticulo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEliniarArticulo.UseVisualStyleBackColor = true;
-            this.btnEliniarArticulo.Click += new System.EventHandler(this.btnEliniarArticulo_Click);
+            this.btnEliminarArticulo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminarArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminarArticulo.Image = global::Sistema_Facturacion.Properties.Resources.borrar;
+            this.btnEliminarArticulo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEliminarArticulo.Location = new System.Drawing.Point(607, 3);
+            this.btnEliminarArticulo.Name = "btnEliminarArticulo";
+            this.btnEliminarArticulo.Size = new System.Drawing.Size(148, 33);
+            this.btnEliminarArticulo.TabIndex = 5;
+            this.btnEliminarArticulo.Text = "Eliminar Artículo";
+            this.btnEliminarArticulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEliminarArticulo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEliminarArticulo.UseVisualStyleBackColor = true;
+            this.btnEliminarArticulo.Click += new System.EventHandler(this.btnEliniarArticulo_Click);
             // 
             // btnLimpiar
             // 
             this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLimpiar.Enabled = false;
             this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpiar.Image = global::Sistema_Facturacion.Properties.Resources.borrar2;
             this.btnLimpiar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -496,6 +494,7 @@
             this.btnLimpiar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Visible = false;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // groupBox5
@@ -514,11 +513,7 @@
             this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.01299F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.98701F));
-            this.tableLayoutPanel5.Controls.Add(this.label14, 1, 2);
-            this.tableLayoutPanel5.Controls.Add(this.label13, 0, 2);
-            this.tableLayoutPanel5.Controls.Add(this.lBItebis, 1, 1);
-            this.tableLayoutPanel5.Controls.Add(this.lBSubtotal, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.label11, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.lBtotal, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.label12, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 16);
@@ -530,60 +525,15 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(308, 82);
             this.tableLayoutPanel5.TabIndex = 4;
             // 
-            // label14
+            // lBtotal
             // 
-            this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label14.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(117, 54);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(188, 28);
-            this.label14.TabIndex = 7;
-            this.label14.Text = "$1,960";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label13
-            // 
-            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(3, 54);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(108, 28);
-            this.label13.TabIndex = 6;
-            this.label13.Text = "GENERAL:";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lBItebis
-            // 
-            this.lBItebis.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lBItebis.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lBItebis.Location = new System.Drawing.Point(117, 27);
-            this.lBItebis.Name = "lBItebis";
-            this.lBItebis.Size = new System.Drawing.Size(188, 27);
-            this.lBItebis.TabIndex = 5;
-            this.lBItebis.Text = "$160";
-            this.lBItebis.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lBSubtotal
-            // 
-            this.lBSubtotal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lBSubtotal.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lBSubtotal.Location = new System.Drawing.Point(117, 0);
-            this.lBSubtotal.Name = "lBSubtotal";
-            this.lBSubtotal.Size = new System.Drawing.Size(188, 27);
-            this.lBSubtotal.TabIndex = 4;
-            this.lBSubtotal.Text = "$1,800";
-            this.lBSubtotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label11
-            // 
-            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(3, 27);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(108, 27);
-            this.label11.TabIndex = 3;
-            this.label11.Text = "ITBIS (18%):";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lBtotal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lBtotal.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lBtotal.Location = new System.Drawing.Point(117, 0);
+            this.lBtotal.Name = "lBtotal";
+            this.lBtotal.Size = new System.Drawing.Size(188, 27);
+            this.lBtotal.TabIndex = 4;
+            this.lBtotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label12
             // 
@@ -593,7 +543,7 @@
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(108, 27);
             this.label12.TabIndex = 1;
-            this.label12.Text = "Subtotal:";
+            this.label12.Text = "Total";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tableLayoutPanel6
@@ -625,6 +575,7 @@
             this.btnCrearFactura.Text = "CREAR FACTURA";
             this.btnCrearFactura.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCrearFactura.UseVisualStyleBackColor = true;
+            this.btnCrearFactura.Click += new System.EventHandler(this.btnCrearFactura_Click);
             // 
             // btnCancelar
             // 
@@ -702,7 +653,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown nuCantidad;
         private System.Windows.Forms.Button btnAgregarArticulo;
-        private System.Windows.Forms.Button btnEliniarArticulo;
+        private System.Windows.Forms.Button btnEliminarArticulo;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.ListView lVProductos;
         private System.Windows.Forms.Panel panel2;
@@ -712,11 +663,7 @@
         private System.Windows.Forms.ColumnHeader subTotal;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label lBItebis;
-        private System.Windows.Forms.Label lBSubtotal;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lBtotal;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Button btnCrearFactura;
