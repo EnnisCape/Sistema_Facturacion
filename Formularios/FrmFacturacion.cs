@@ -1,6 +1,7 @@
 ﻿using Sistema_Facturacion.Clases;
 using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics.Eventing.Reader;
 using System.Windows.Forms;
 
@@ -128,7 +129,7 @@ namespace Sistema_Facturacion.Formularios
                         break;
                     }
                 }
-                
+
                 idProductoInTag = 0;
             }
         }
@@ -291,7 +292,8 @@ namespace Sistema_Facturacion.Formularios
 
         private void btnCrearFactura_Click(object sender, EventArgs e)
         {
-            if (clienteSeleccionado == null || lVProductos.Items.Count == 0) {
+            if (clienteSeleccionado == null || lVProductos.Items.Count == 0)
+            {
 
                 MessageBox.Show("Faltan elementos importantes de esta factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -302,36 +304,10 @@ namespace Sistema_Facturacion.Formularios
             if (resultado == DialogResult.Yes)
             {
                 // Entra aquí solo si hacen clic en "Sí"
-
-
-
-
-
-                idProductoInTag = 0;
-                TotalG = 0;
-                lBtotal.Text = TotalG.ToString("C2");
-                clienteSeleccionado = null;
-                ProductoSeleccionado = null;
-                cBCliente.SelectedIndex = -1;
-                // 1. Elimina todas las filas (artículos) del ListView
-                lVProductos.Items.Clear();
-                lBCedula.Text = string.Empty;
-                lBDireccion.Text = string.Empty;
-
-
+                GenerarFactura();
             }
 
         }
-
-
-
-
-
-
-
-
-
-
 
         private void AutoAjustarColumnasProporcional()
         {
@@ -343,6 +319,117 @@ namespace Sistema_Facturacion.Formularios
             lVProductos.Columns[1].Width = (int)(anchoTotal * 0.15); // Cantidad: 15%
             lVProductos.Columns[2].Width = (int)(anchoTotal * 0.20); // Precio: 20%
             lVProductos.Columns[3].Width = (int)(anchoTotal * 0.20); // Subtotal: 20%
+        }
+
+
+        private void GenerarFactura()
+        {
+            // Cambia esto por tu cadena de conexión real a SQL Server
+            string connectionString = @"Data Source=localhost\SQLEXPRESS; Initial Catalog = SistemaFacturacion; Integrated Security = True";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Iniciamos una transacción para asegurar la integridad de los datos
+                using (SqlTransaction transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        // ==========================================
+                        // PASO 1: INSERTAR EN CABECERA_FACTURA
+                        // ==========================================
+                        string queryCabecera = @"
+                    INSERT INTO [dbo].[Cabecera_factura] (Fecha, Id_cliente, Id_empleado, Total, Estado_factura)
+                    VALUES (@Fecha, @IdCliente, @IdEmpleado, @Total, @Estado);
+                    SELECT SCOPE_IDENTITY();"; // Recupera el Id_factura recién generado
+
+                        int idFacturaGenerado = 0;
+
+                        using (SqlCommand cmdCabecera = new SqlCommand(queryCabecera, connection, transaction))
+                        {
+                            cmdCabecera.Parameters.AddWithValue("@Fecha", dtpFechaFactura.Value);
+                            cmdCabecera.Parameters.AddWithValue("@IdCliente", Convert.ToInt32(cBCliente.SelectedValue));
+
+                            // Aquí colocas el ID del empleado logueado en tu sistema (por ahora dejamos 1 como ejemplo)
+                            cmdCabecera.Parameters.AddWithValue("@IdEmpleado", 1);
+
+                            // Convertimos el total acumulado en tu etiqueta o TextBox
+                            cmdCabecera.Parameters.AddWithValue("@Total", Convert.ToDecimal(lBtotal.Text.Substring(1)));
+                            cmdCabecera.Parameters.AddWithValue("@Estado", "A"); // 'A' de Activa
+
+                            // ExecuteScalar ejecuta el INSERT y nos devuelve el id de la factura autogenerado
+                            idFacturaGenerado = Convert.ToInt32(cmdCabecera.ExecuteScalar());
+                        }
+
+                        // ==========================================
+                        // PASO 2: INSERTAR EN DETALLE_FACTURA
+                        // ==========================================
+                        string queryDetalle = @"
+                    INSERT INTO [dbo].[Detalle_factura] (Id_factura, Id_producto, Cantidad, Precio_unitario, Subtotal)
+                    VALUES (@IdFactura, @IdProducto, @Cantidad, @PrecioUnitario, @Subtotal);";
+
+                        // Recorremos cada fila que el usuario agregó al ListView
+                        foreach (ListViewItem fila in lVProductos.Items)
+                        {
+                            using (SqlCommand cmdDetalle = new SqlCommand(queryDetalle, connection, transaction))
+                            {
+                                // Recuperamos el ID del producto guardado de manera oculta en el Tag de la fila
+                                int idProducto = (int)fila.Tag;
+
+                                // Extraemos los textos de las columnas correspondientes
+                                int cantidad = Convert.ToInt32(fila.SubItems[1].Text);
+                                decimal precioUnitario = Convert.ToDecimal(fila.SubItems[2].Text.Substring(1));
+                                decimal subtotal = Convert.ToDecimal(fila.SubItems[3].Text.Substring(1));
+
+                                // Asignamos los parámetros de la base de datos
+                                cmdDetalle.Parameters.AddWithValue("@IdFactura", idFacturaGenerado);
+                                cmdDetalle.Parameters.AddWithValue("@IdProducto", idProducto);
+                                cmdDetalle.Parameters.AddWithValue("@Cantidad", cantidad);
+                                cmdDetalle.Parameters.AddWithValue("@PrecioUnitario", precioUnitario);
+                                cmdDetalle.Parameters.AddWithValue("@Subtotal", subtotal);
+
+                                // Ejecutamos la inserción de esta fila de detalle
+                                cmdDetalle.ExecuteNonQuery();
+                            }
+                        }
+
+                        // ==========================================
+                        // PASO 3: CONFIRMAR TRANSACCIÓN
+                        // ==========================================
+                        // Si todo se ejecutó sin errores, guardamos los cambios definitivamente en SQL Server
+                        transaction.Commit();
+
+                        MessageBox.Show($"Factura No. {idFacturaGenerado} creada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Limpiamos los controles para la siguiente factura
+                        LimpiarPantallaFactura();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Si ocurre CUALQUIER error en la cabecera o en alguno de los detalles,
+                        // cancelamos todo lo que se intentó hacer para no dejar basura en la base de datos.
+                        transaction.Rollback();
+                        MessageBox.Show($"Ocurrió un error al guardar la factura: {ex.Message}", "Error Fatal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+
+        }
+
+        private void LimpiarPantallaFactura()
+        {
+            idProductoInTag = 0;
+            TotalG = 0;
+            lBtotal.Text = TotalG.ToString("C2");
+            clienteSeleccionado = null;
+            ProductoSeleccionado = null;
+            cBCliente.SelectedIndex = -1;
+            // 1. Elimina todas las filas (artículos) del ListView
+            lVProductos.Items.Clear();
+            lBCedula.Text = string.Empty;
+            lBDireccion.Text = string.Empty;
+
         }
     }
 }
